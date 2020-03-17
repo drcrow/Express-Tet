@@ -21,5 +21,14 @@ app.get('/', home.index);
 app.get('/customer', customer.index);
 app.get('/customer/contact', customer.contact);
 
+app.get('/customer/:id', (req, res) => {
+    res.send('Customer ID is ' + req.params.id);
+})
+
+// post?id=xx
+app.get('/post', (req, res) => {
+    res.send('Post ID is ' + req.query.id);
+})
+
 
 app.listen(3000);
