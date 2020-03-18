@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var home = require('./routes/home');
 var customer = require('./routes/customer');
 
@@ -7,9 +8,11 @@ var app = express();
 app.set('title', 'Node Demo App');
 //app.use(express.logger('dev'));
 //app.use(express.favicon());
+
+app.set('view engine', 'jade');
+app.set('views', __dirname + '/views');
+
 app.use(express.static(__dirname + '/public'));
-
-
 
 /*
 app.get('/', function(req, res) {
@@ -40,6 +43,10 @@ app.get('/post', (req, res) => {
 
 app.get('/title', (req, res) => {
     res.send('Title: ' + app.get('title'));
+})
+
+app.get('/view-test', (req, res) => {
+    res.render('empty');
 })
 
 
