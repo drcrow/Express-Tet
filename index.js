@@ -1,7 +1,15 @@
 var express = require('express');
 var home = require('./routes/home');
 var customer = require('./routes/customer');
+
 var app = express();
+
+app.set('title', 'Node Demo App');
+//app.use(express.logger('dev'));
+//app.use(express.favicon());
+app.use(express.static(__dirname + '/public'));
+
+
 
 /*
 app.get('/', function(req, res) {
@@ -28,6 +36,10 @@ app.get('/customer/:id', (req, res) => {
 // post?id=xx
 app.get('/post', (req, res) => {
     res.send('Post ID is ' + req.query.id);
+})
+
+app.get('/title', (req, res) => {
+    res.send('Title: ' + app.get('title'));
 })
 
 
